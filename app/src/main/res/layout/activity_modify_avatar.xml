@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    tools:context=".ui.me.widget.ModifyAvatarActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        app:layout_constraintTop_toTopOf="parent"
+        app:contentInsetStart="0dp"
+        android:paddingRight="20dp"
+        android:background="@color/white"
+        app:navigationIcon="@drawable/ic_arrow_back_black"
+        app:title=" ">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="设置头像"
+
+            android:textSize="@dimen/text_size_f"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/game_green_text"
+            android:id="@+id/modify_avatar_select"
+            android:layout_gravity="right"
+            android:text="选择"
+            android:textSize="@dimen/text_size_f"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:id="@+id/modify_avatar"
+        app:placeholderImage="@drawable/user_default_photo"
+        app:placeholderImageScaleType="fitCenter"
+        app:actualImageScaleType="focusCrop"
+        app:progressBarImage="@drawable/icon_progress_bar"
+        app:progressBarImageScaleType="centerInside"
+        app:progressBarAutoRotateInterval="3000"
+        app:failureImage="@drawable/icon_failure"
+        app:failureImageScaleType="centerInside"
+        app:retryImage="@drawable/icon_retry"
+        app:retryImageScaleType="centerCrop"
+        app:fadeDuration="3000"
+        app:backgroundImage="@android:color/holo_orange_light"
+
+        app:roundAsCircle="true"
+        android:layout_width="300dp"
+        android:layout_height="300dp" />
+
+</android.support.constraint.ConstraintLayout>

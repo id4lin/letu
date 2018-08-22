@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/game_detail_CollapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:collapsedTitleTextAppearance="@style/ToolBarTitleText"
+            app:contentScrim="@color/colorAccent"
+            app:expandedTitleTextAppearance="@style/transparentText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="?actionBarSize"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7">
+
+                <View
+                    android:id="@+id/promoter_base_info_title_icon_tv"
+                    android:layout_width="3dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@color/orange"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/promoter_base_info_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="15dp"
+                    android:text="基本信息"
+                    android:textSize="16dp"
+                    app:layout_constraintLeft_toRightOf="@+id/promoter_base_info_title_icon_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/promoter_game_name_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="游戏名:"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_base_info_title_icon_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_game_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="gamename"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_game_name_title_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_base_info_title_icon_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_pay_num_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="充&#160;&#160;&#8201;&#8201;值:"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_pay_num_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_game_name_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_pay_num_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="100"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_pay_num_title_tv"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_divide_info_title_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_game_name_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_divide_info_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="分成比:"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_pay_num_tv"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_divide_info_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_game_name_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_divide_info_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="3:7"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_divide_info_title_tv"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_game_name_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_gainsharing_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="收&#160;&#160;&#8201;&#8201;入:"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_pay_num_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_pay_num_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_gainsharing_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="100"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_gainsharing_title_tv"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_balance_title_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_pay_num_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_balance_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="结&#160;&#160;&#8201;&#8201;算:"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_gainsharing_tv"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_balance_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_pay_num_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_balance_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="是"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_balance_title_tv"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_pay_num_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_regist_num_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="注册数:"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_regist_num_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_gainsharing_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_regist_num_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="100"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_regist_num_title_tv"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_code_title_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_gainsharing_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_code_title_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="推广码:"
+                    app:layout_constraintHorizontal_weight="1"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_regist_num_tv"
+                    app:layout_constraintRight_toLeftOf="@id/promoter_code_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_gainsharing_title_tv" />
+
+                <TextView
+                    android:id="@+id/promoter_code_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="是"
+                    app:layout_constraintHorizontal_weight="2"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_code_title_tv"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_gainsharing_title_tv" />
+
+                <View
+                    android:id="@+id/promoter_base_info_divide_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray_bg"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_regist_num_title_tv" />
+
+                <View
+                    android:id="@+id/promoter_url_title_icon_tv"
+                    android:layout_width="3dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/orange"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_base_info_divide_line" />
+
+                <TextView
+                    android:id="@+id/promoter_url_title_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="10dp"
+                    android:text="推广链接:"
+                    android:textSize="16dp"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_url_title_icon_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_base_info_divide_line" />
+
+
+                <TextView
+                    android:id="@+id/promoter_url_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_url_title_tv" />
+
+
+                <TextView
+                    android:id="@+id/promoter_url_copy_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/corners_bg_btn"
+                    android:padding="5dp"
+                    android:text="点击复制推广链接分享给好友一起玩"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_url_tv" />
+
+                <View
+                    android:id="@+id/promoter_url_divide_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray_bg"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_url_copy_tv" />
+
+                <View
+                    android:id="@+id/promoter_user_info_title_icon_tv"
+                    android:layout_width="3dp"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@color/orange"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_url_divide_line" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="用户明细:"
+                    android:textSize="16dp"
+                    app:layout_constraintLeft_toRightOf="@id/promoter_user_info_title_icon_tv"
+                    app:layout_constraintTop_toBottomOf="@id/promoter_url_divide_line" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="@color/colorAccent"
+                android:minHeight="?actionBarSize"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_arrow_white"
+                app:title=" "
+                app:titleTextColor="@color/white">
+
+                <TextView
+                    android:id="@+id/game_name_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="left"
+                    android:text="推广详情"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_f"
+                    android:textStyle="bold" />
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5dp"
+            android:background="@color/gray_bg"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
+
+            <TextView
+                android:background="@color/gray_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:text="用户名"
+                android:textSize="14dp" />
+
+            <TextView
+                android:textStyle="bold"
+                android:background="@color/gray_bg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="充值金额(单位:元)"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/promoter_list_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+</android.support.design.widget.CoordinatorLayout>

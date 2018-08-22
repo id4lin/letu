@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_bg"
+    tools:context=".ui.strategy.widget.StrategyEditActivity">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:theme="@style/ToolBarTitleText"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/colorAccent"
+        app:titleTextColor="@color/white"
+        app:title="写攻略"
+        app:navigationIcon="@drawable/ic_arrow_white" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        app:errorEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        android:id="@+id/strategy_edit_title_TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputEditText
+            android:maxLines="1"
+            android:id="@+id/strategy_edit_title_tv"
+            android:hint="标题"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        app:errorEnabled="true"
+        android:visibility="gone"
+        android:layout_height="0dp"
+        android:id="@+id/strategy_edit_content_TextInputLayout"
+        app:layout_constraintTop_toBottomOf="@id/strategy_edit_title_TextInputLayout"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/strategy_edit_content_tv"
+            android:hint="攻略内容"
+            android:gravity="start|top"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <com.sendtion.xrichtext.RichTextEditor
+        android:id="@+id/strategy_edit_content_rt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/strategy_edit_title_TextInputLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:rt_editor_image_height="500"
+        app:rt_editor_image_bottom="10"
+        app:rt_editor_text_init_hint="在这里输入内容"
+        app:rt_editor_text_size="16"/>
+
+</android.support.constraint.ConstraintLayout>

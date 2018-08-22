@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/game_detail_CollapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            app:collapsedTitleTextAppearance="@style/ToolBarTitleText"
+            app:contentScrim="@color/colorAccent"
+            app:expandedTitleTextAppearance="@style/transparentText"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:title="">
+
+            <ImageView
+                android:id="@+id/iv_content"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_gravity="top"
+                android:contentDescription="@null"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.8"
+                app:layout_scrollFlags="scroll|snap|enterAlways|enterAlwaysCollapsed" />
+
+            <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/footer_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="horizontal"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.6"
+                app:layout_scrollFlags="scroll|snap|enterAlways|enterAlwaysCollapsed">
+
+                <ImageView
+                    android:id="@+id/game_icon"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_gamelib_picture"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/game_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    android:textSize="@dimen/text_size_g"
+                    android:textStyle="bold"
+                    app:layout_constraintLeft_toRightOf="@id/game_icon"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/game_create_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toRightOf="@id/game_icon" />
+
+                <TextView
+                    android:id="@+id/game_cp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text=""
+                    app:layout_constraintBottom_toTopOf="@id/game_create_time"
+                    app:layout_constraintLeft_toRightOf="@id/game_icon"
+                    app:layout_constraintTop_toBottomOf="@id/game_name" />
+                <TextView
+                    android:id="@+id/game_play"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:text="我要玩"
+                    android:background="@drawable/ic_game_download_btn_bg"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/game_name" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_gravity="top"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:navigationIcon="@drawable/ic_arrow_white"
+                app:title="">
+
+                <TextView
+                    android:id="@+id/play"
+                    style="@style/ActionText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:text="我要玩" />
+            </android.support.v7.widget.Toolbar>
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+        <!--<TextView-->
+        <!--android:layout_marginTop="10dp"-->
+        <!--android:textSize="@dimen/text_size_f"-->
+        <!--android:textStyle="bold"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="游戏简介"/>-->
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/n_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginBottom="10dp"
+                android:text="游戏截图"
+                android:textSize="@dimen/text_size_e"
+                android:textStyle="bold" />
+            <HorizontalScrollView
+                android:scrollbars="none"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+
+                        android:id="@+id/game_screen_shot_1"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/round_corner_bg"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp" />
+                    <ImageView
+                        android:id="@+id/game_screen_shot_2"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/round_corner_bg"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp"/>
+                    <ImageView
+                        android:id="@+id/game_screen_shot_3"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/round_corner_bg"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp" />
+                    <ImageView
+                        android:id="@+id/game_screen_shot_4"
+                        android:background="@drawable/round_corner_bg"
+                        android:layout_width="200dp"
+                        android:layout_height="100dp" />
+                </LinearLayout>
+
+            </HorizontalScrollView>
+            <View
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:background="@color/divider_game_category"
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+
+                android:text="简介"
+                android:textSize="@dimen/text_size_e"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/game_brief_introduction"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text=""
+                android:textSize="@dimen/text_size_c" />
+
+
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingBottom="5dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp">
+
+        <Button
+            android:id="@+id/game_query_strategy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_game_download_btn_bg"
+            android:text="查看攻略"
+            android:textColor="@color/blue_badge_text"
+            android:textSize="16.0sp" />
+
+        <Button
+            android:id="@+id/game_write_strategy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/ic_game_download_btn_bg"
+            android:text="写攻略"
+            android:textColor="@color/blue_badge_text"
+            android:textSize="16.0sp" />
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/gray_bg"
+    android:fitsSystemWindows="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="?actionBarSize"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        app:contentInsetStart="0dp"
+        app:navigationIcon="@drawable/ic_arrow_back_black"
+        app:title=" " >
+        <TextView
+            android:id="@+id/regist"
+            style="@style/ActionText"
+            android:layout_gravity="right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_regist"
+            android:textColor="@color/colorAccent" />
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/login_info_linear_layout"
+        android:layout_centerInParent="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:textAllCaps="false"
+            android:id="@id/title"
+            android:text="郎伦游戏"
+            android:textStyle="bold"
+            android:textColor="@color/colorAccent"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_i"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dip"/>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/login_phone_tilayout"
+            style="@style/TextInputLayoutwhite"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="32.0dip"
+            app:errorEnabled="true"
+            app:errorTextAppearance="@style/TextAppearance.Design.Error"
+            android:layout_marginRight="32.0dip"
+            android:layout_marginTop="20.0dip"
+            android:textColorHint="@color/more">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/username"
+                style="@style/LoginEditText"
+                android:inputType="phone"
+                android:imeOptions="actionNext"
+                android:hint="@string/regist_input_hint_phone" />
+        </android.support.design.widget.TextInputLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/page_left_right_margin_double"
+            android:layout_marginRight="@dimen/page_left_right_margin_double"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/login_password_tilayout"
+                style="@style/TextInputLayoutwhite"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@style/TextAppearance.Design.Error"
+                android:imeOptions="actionDone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/more">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/password"
+                    style="@style/LoginEditText"
+                    android:hint="@string/regist_input_hint_password"
+                    android:inputType="textPassword" />
+            </android.support.design.widget.TextInputLayout>
+
+            <TextView
+                android:id="@+id/forget"
+                style="@style/SupplementText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/login_password_tilayout"
+                android:layout_marginRight="4.0dip"
+                android:layout_marginTop="27.0dip"
+                android:gravity="bottom|center"
+                android:paddingTop="4.0dip"
+                android:text="@string/login_forget_password"
+                android:textColor="@color/subTitleTextColor" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/login_button"
+            android:background="@drawable/ic_game_download_btn_bg"
+            android:layout_width="fill_parent"
+            android:layout_height="52.0dip"
+            android:layout_marginBottom="64.0dip"
+            android:layout_marginLeft="32.0dip"
+            android:layout_marginRight="32.0dip"
+            android:layout_marginTop="35.0dip"
+            android:text="登录"
+            android:textColor="@color/blue_badge_text"
+            android:textSize="16.0sp" />
+        <!--style="@style/CustomButton"-->
+    </LinearLayout>
+
+    <!--<TextView-->
+        <!--android:layout_above="@id/login_info_linear_layout"-->
+        <!--android:textAllCaps="false"-->
+        <!--android:id="@id/title"-->
+        <!--android:text="郎伦游戏"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/colorAccent"-->
+        <!--android:textSize="@dimen/text_size_i"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="30dip"/>-->
+
+
+    <RelativeLayout
+        android:id="@+id/progressBar_loading"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/toolbar"
+        android:background="@color/background_default"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="24.0dip"
+            android:layout_marginRight="24.0dip"
+            android:layout_marginTop="208.0dip"
+            android:indeterminate="true" />
+    </RelativeLayout>
+</RelativeLayout>

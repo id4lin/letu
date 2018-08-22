@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.strategy.widget.StrategyDetailActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/white"
+        app:contentInsetStart="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navigationIcon="@drawable/ic_arrow_back_black"
+        app:title="">
+
+        <TextView
+            android:id="@+id/play"
+            style="@style/ActionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="10dp"
+            android:text="我要玩"
+            android:textColor="@color/colorAccent" />
+    </android.support.v7.widget.Toolbar>
+    <View
+        android:id="@+id/toolbar_dirivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_bg"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/footer_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/corners_bg_fooler"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corners_bg_fooler_text"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="我来说两句..."
+            android:textColor="@color/comment_text"
+            android:textSize="@dimen/text_size_e"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/strategy_collect"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_collect_border_white"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <ImageView
+            android:id="@+id/comment_text_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/comment_circle_grey"
+            app:layout_constraintRight_toLeftOf="@id/strategy_collect" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ScrollView
+        android:id="@+id/strategy_contents_scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fillViewport="true"
+        android:paddingTop="10dp"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/footer_view"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_dirivider">
+
+        <android.support.constraint.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/strategy_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/strategy_create_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/strategy_title" />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintTop_toBottomOf="@id/strategy_title"
+                android:id="@+id/strategy_create_time"
+                android:textSize="12dp"
+                app:layout_constraintLeft_toRightOf="@id/strategy_create_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <WebView
+                android:layout_marginTop="10dp"
+                android:id="@+id/strategy_contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintTop_toBottomOf="@id/strategy_create_name" />
+
+            <LinearLayout
+                android:id="@+id/strategy_like_linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/strategy_contents">
+
+                <TextView
+                    android:id="@+id/strategy_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/corners_bg_red_like"
+                    android:drawableLeft="@drawable/ic_quanzi_zan_light"
+                    android:drawableTint="@color/orange"
+                    android:gravity="center"
+                    android:paddingRight="10dp"
+                    android:text="0人喜欢"
+                    android:textColor="@color/orange" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/comment_list_title_icon"
+                android:layout_width="3dp"
+                android:layout_height="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/orange"
+                app:layout_constraintTop_toBottomOf="@id/strategy_like_linearLayout" />
+
+            <TextView
+                android:id="@+id/comment_list_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:text="评论"
+                app:layout_constraintLeft_toRightOf="@id/comment_list_title_icon"
+                app:layout_constraintTop_toBottomOf="@id/strategy_like_linearLayout" />
+
+            <View
+                android:id="@+id/comment_list_title_dirivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/badge"
+                app:layout_constraintTop_toBottomOf="@id/comment_list_title_icon" />
+            <!--<view-->
+            <!--app:layout_constraintTop_toBottomOf="@id/comment_list_title"-->
+            <!--android:id="@+id/comment_line_divider"-->
+            <!--android:background="@color/divider"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"/>-->
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/comment_list_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/comment_list_title_dirivider" />
+            <!--<com.letu.app.game.strategy.ui.common.pullloadmoreview.PullLoadMoreRecyclerView-->
+            <!--android:id="@+id/comment_list_recyclerView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintLeft_toLeftOf="parent"-->
+            <!--app:layout_constraintRight_toRightOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/comment_list_title" />-->
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
