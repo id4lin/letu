@@ -14,7 +14,26 @@ public class PromoterListItemResponse {
     private String gameName;
     private long registNum;
     private long payMoney;
+    private float agentMoney;
+    private float radio;
     private List<DownloadBean> downloadBean;
+
+
+    public void setAgentMoney(float agentMoney) {
+        this.agentMoney = agentMoney;
+    }
+
+    public void setRadio(float radio) {
+        this.radio = radio;
+    }
+
+    public float getAgentMoney() {
+        return agentMoney;
+    }
+
+    public float getRadio() {
+        return radio;
+    }
 
     public int getId() {
         return id;

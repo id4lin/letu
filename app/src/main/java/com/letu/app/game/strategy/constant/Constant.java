@@ -47,6 +47,9 @@ public class Constant {
 
     public static final String  KEY_INTENT_PROMOTER_BEAN="KEY_INTENT_PROMOTER_BEAN";
 
+    public static final String  KEY_INTENT_START_TIME="KEY_INTENT_START_TIME";
+    public static final String  KEY_INTENT_END_TIME="KEY_INTENT_END_TIME";
+
     public static final String  KEY_INTENT_POSITION="KEY_INTENT_POSITION";
     public static final String  KEY_INTENT_IMG_LIST="KEY_INTENT_IMG_LIST";
 

@@ -9,7 +9,9 @@ import com.letu.app.game.strategy.ui.me.contract.PromoterContract;
 import com.letu.app.game.strategy.ui.other.bean.OtherResponse;
 import com.letu.app.game.strategy.ui.other.bean.PromoterListItemResponse;
 import com.letu.app.game.strategy.utils.SPManager;
+import com.letu.app.game.strategy.utils.TimeUtils;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -27,8 +29,8 @@ public class PromoterPresenter extends BasePresenter<PromoterContract.View> impl
     OtherNetApi otherNetApi;
 
     @Override
-    public void fetchMyPromoterList() {
-        otherNetApi.fetchMyPromoterList(SPManager.getInstance().getLoginToken())
+    public void fetchMyPromoterList(Date date) {
+        otherNetApi.fetchMyPromoterList(SPManager.getInstance().getLoginToken(),TimeUtils.firstDayOfMonth(date),TimeUtils.lastDayOfMonth(date))
                 .compose(mView.getLifecycleProvider().<BaseResponse<List<PromoterListItemResponse>>>bindToLifecycle())
                 .compose(RxHelper.<BaseResponse<List<PromoterListItemResponse>>>io_main())
                 .subscribe(new HttpSubscriber<BaseResponse<List<PromoterListItemResponse>>>() {
@@ -42,6 +44,12 @@ public class PromoterPresenter extends BasePresenter<PromoterContract.View> impl
                     @Override
                     public void onFail(BaseResponse<List<PromoterListItemResponse>> otherResponseBaseResponse) {
                         mView.fetchMyPromoterListFails(otherResponseBaseResponse.getCode(), otherResponseBaseResponse.getMessage());
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
+                        mView.fetchMyPromoterListError();
                     }
                 });
     }

@@ -1,6 +1,7 @@
 package com.letu.app.game.strategy.utils;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -8,12 +9,12 @@ import java.util.Date;
  */
 public class TimeUtils {
 
-    private static final String DEFAULT_FORMAT="yyyy-MM-dd HH:mm";
-    private static final String FORMAT_YYYY_MM="yyyy-MM";
-    private static final String FORMAT_YYYY_MM_DD="yyyy-MM-dd";
-    private static final String FORMAT_MM_DD="MM-dd";
-    private static final String FORMAT_YYYY_MM_DD_HH_MM="yyyy-MM-dd HH:mm";
-    private static final String FORMAT_YYYY_MM_DD_HH_MM_SS="yyyy-MM-dd HH:mm:ss";
+    private static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm";
+    private static final String FORMAT_YYYY_MM = "yyyy-MM";
+    private static final String FORMAT_YYYY_MM_DD = "yyyy-MM-dd";
+    private static final String FORMAT_MM_DD = "MM-dd";
+    private static final String FORMAT_YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
+    private static final String FORMAT_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
     private final static long MS_MINUTE = 60 * 1000;// 1分钟
     private final static long MS_HOUR = 60 * MS_MINUTE;// 1小时
@@ -24,7 +25,7 @@ public class TimeUtils {
     /**
      * 时间戳转换成日期格式字符串
      *
-     * @param seconds   精确到秒的字符串
+     * @param seconds 精确到秒的字符串
      * @param format
      * @return
      */
@@ -41,22 +42,21 @@ public class TimeUtils {
 
     public static String timeStamp2Date(String seconds) {
 
-        return timeStamp2Date(seconds,null);
+        return timeStamp2Date(seconds, null);
     }
 
     public static String time2Date(String time) {
 
 
-        return time2Date(time,null);
+        return time2Date(time, null);
     }
 
     /**
-     *
-     * @param time 精确到毫秒
+     * @param time   精确到毫秒
      * @param format
      * @return
      */
-    public static String time2Date(String time,String format) {
+    public static String time2Date(String time, String format) {
 
         if (time == null || time.isEmpty() || time.equals("null")) {
             return "";
@@ -132,7 +132,40 @@ public class TimeUtils {
         return "刚刚";
     }
 
-    public static String time2TextTime(long time){
+    public static String time2TextTime(long time) {
         return Date2TextTime(new Date(time));
+    }
+
+    /**
+     * 获取前月的第一天
+     * @param date
+     * @return
+     */
+    public static String firstDayOfMonth(Date date) {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd 00:00:00");
+
+        // 获取前月的第一天
+        Calendar cale = Calendar.getInstance();
+        cale.setTime(date);
+        cale.add(Calendar.MONTH, 0);
+        cale.set(Calendar.DAY_OF_MONTH, 1);
+        return format.format(cale.getTime());
+    }
+
+    /**
+     * 获取前月的最后一天
+     * @param date
+     * @return
+     */
+    public static String lastDayOfMonth(Date date) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
+
+        // 获取前月的最后一天
+        Calendar  cale = Calendar.getInstance();
+        cale.setTime(date);
+        cale.add(Calendar.MONTH, 1);
+        cale.set(Calendar.DAY_OF_MONTH, 0);
+        return format.format(cale.getTime());
     }
 }

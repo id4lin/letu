@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.letu.app.baselib.base.BaseActivity;
 import com.letu.app.baselib.utils.ToastUtil;
-import com.letu.app.game.strategy.LetuApplicaiton;
 import com.letu.app.game.strategy.R;
 import com.letu.app.game.strategy.constant.Constant;
 import com.letu.app.game.strategy.dagger.DaggerAppBaseComponent;
@@ -23,12 +22,14 @@ import com.letu.app.game.strategy.ui.me.bean.PromoterBean;
 import com.letu.app.game.strategy.ui.me.bean.PromoterListRecyclerViewItemBean;
 import com.letu.app.game.strategy.ui.me.contract.PromoterDetailContract;
 import com.letu.app.game.strategy.ui.me.presenter.PromoterDetailPresenter;
+import com.letu.app.game.strategy.ui.other.bean.PromoterIncomeListItemResponse;
 import com.letu.app.game.strategy.utils.LeTuUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter> implements PromoterDetailContract.View {
@@ -46,13 +47,28 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
     TextView promoterUrlTv;
     @BindView(R.id.promoter_list_rv)
     RecyclerView promoterListRv;
+    @BindView(R.id.promoter_game_name_tv)
+    TextView promoterGameNameTv;
+    @BindView(R.id.promoter_pay_num_tv)
+    TextView promoterPayNumTv;
+    @BindView(R.id.promoter_gainsharing_tv)
+    TextView promoterGainsharingTv;
+    @BindView(R.id.promoter_balance_tv)
+    TextView promoterBalanceTv;
+    @BindView(R.id.promoter_regist_num_tv)
+    TextView promoterRegistNumTv;
+    @BindView(R.id.promoter_divide_info_tv)
+    TextView promoterDivideInfoTv;
     private String promoterCode;
     private String androidUrl;
     private String iosUrl;
     private String gameName;
-    private String promoterUrl="暂无<br>";
+    private String promoterUrl = "暂无<br>";
     private PromoterListRecyclerViewAdapter mPromoterListRecyclerViewAdapter;
     private List<PromoterListRecyclerViewItemBean> dataList = new ArrayList<>();
+    private String mStartTime;
+    private String mEndTime;
+    private String gameId;
 
     @Override
     protected void daggerInit() {
@@ -66,7 +82,10 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_promoter_detail_n);
+        mPresenter.attachView(this);
         initData();
+
+        mPresenter.fetchPromoterIncomeList(gameId,mStartTime,mEndTime);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,9 +96,9 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
 
     }
 
-    @OnClick( R.id.promoter_url_copy_tv)
+    @OnClick(R.id.promoter_url_copy_tv)
     public void onViewClicked(View view) {
-        if(LeTuUtils.isFastClick()){
+        if (LeTuUtils.isFastClick()) {
             return;
         }
         putTextIntoClip();
@@ -93,36 +112,45 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
             return;
         }
 
+        mStartTime=intent.getStringExtra(Constant.KEY_INTENT_START_TIME);
+        mEndTime=intent.getStringExtra(Constant.KEY_INTENT_END_TIME);
+
+        gameId=promoterBean.getGameId();
         promoterCode = promoterBean.getPromoterCode();
         gameName = promoterBean.getGameName();
-//        androidUrl = promoterBean.getApkUrl();
-//        iosUrl = promoterBean.getIpaUrl();
-//        promoterUrl
-        List<PromoterBean.GameUrlBean> gameUrlBeanList=promoterBean.getGameUrlBeanList();
-        if(null!=gameUrlBeanList&&!gameUrlBeanList.isEmpty()){
+        //        androidUrl = promoterBean.getApkUrl();
+        //        iosUrl = promoterBean.getIpaUrl();
+        //        promoterUrl
+        List<PromoterBean.GameUrlBean> gameUrlBeanList = promoterBean.getGameUrlBeanList();
+        if (null != gameUrlBeanList && !gameUrlBeanList.isEmpty()) {
             StringBuffer sb = new StringBuffer("");
-            for (PromoterBean.GameUrlBean gameUrlBean:gameUrlBeanList){
-                if(LeTuUtils.isNull(gameUrlBean.getOs())){
+            for (PromoterBean.GameUrlBean gameUrlBean : gameUrlBeanList) {
+                if (LeTuUtils.isNull(gameUrlBean.getOs())) {
                     continue;
                 }
                 sb.append("").append(gameUrlBean.getOs()).append("地址:<br>").append(gameUrlBean.getUrl()).append("<br>");
             }
-            if(0==sb.length()){
+            if (0 == sb.length()) {
                 promoterUrlCopyTv.setVisibility(View.GONE);
-            }else {
+            } else {
                 promoterUrl = sb.toString();
             }
         }
 
         promoterCodeTv.setText(promoterCode);
         promoterUrlTv.setText(Html.fromHtml(promoterUrl));
+        promoterGameNameTv.setText(gameName);
+        promoterBalanceTv.setText("否");
+        promoterGainsharingTv.setText(promoterBean.getGainsharing());
+        promoterPayNumTv.setText(promoterBean.getPay());
+        promoterRegistNumTv.setText(promoterBean.getRegistNum());
+        promoterDivideInfoTv.setText(promoterBean.getRadio()+"");
 
         setTitle();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this );
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         promoterListRv.setLayoutManager(layoutManager);
-        mPromoterListRecyclerViewAdapter=new PromoterListRecyclerViewAdapter(this);
+        mPromoterListRecyclerViewAdapter = new PromoterListRecyclerViewAdapter(this);
         promoterListRv.setAdapter(mPromoterListRecyclerViewAdapter);
-        setPromoterListData();
     }
 
     private void setTitle() {
@@ -145,11 +173,15 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
         clipboardManager.setPrimaryClip(clipData);
     }
 
-    private void setPromoterListData(){
-        for(int i=0;i<20;i++){
-            PromoterListRecyclerViewItemBean promoterListRecyclerViewItemBean=new PromoterListRecyclerViewItemBean();
-            promoterListRecyclerViewItemBean.setPromoterName("name"+i);
-            promoterListRecyclerViewItemBean.setPayNum(""+i);
+    private void setPromoterListData(List<PromoterIncomeListItemResponse> promoterIncomeListItemResponseList) {
+        if(null==promoterIncomeListItemResponseList||promoterIncomeListItemResponseList.isEmpty()){
+            return;
+        }
+
+        for(PromoterIncomeListItemResponse promoterIncomeListItemResponse:promoterIncomeListItemResponseList){
+            PromoterListRecyclerViewItemBean promoterListRecyclerViewItemBean = new PromoterListRecyclerViewItemBean();
+            promoterListRecyclerViewItemBean.setPromoterName(promoterIncomeListItemResponse.getChannelUserName());
+            promoterListRecyclerViewItemBean.setPayNum(promoterIncomeListItemResponse.getPayMoney()+"");
             dataList.add(promoterListRecyclerViewItemBean);
         }
 
@@ -158,4 +190,18 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
     }
 
 
+    @Override
+    public void fetchPromoterIncomeListSuccess(List<PromoterIncomeListItemResponse> promoterIncomeListItemResponseList) {
+        setPromoterListData(promoterIncomeListItemResponseList);
+    }
+
+    @Override
+    public void fetchPromoterIncomeListFails(int code, String msg) {
+
+    }
+
+    @Override
+    public void fetchPromoterIncomeListError() {
+
+    }
 }

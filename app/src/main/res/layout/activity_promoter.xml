@@ -1,53 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/gray_bg"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
+    android:layout_height="fill_parent"
+    android:background="@color/gray_bg">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:layout_alignParentTop="true"
-        app:contentInsetStart="0dp"
-        app:titleTextColor="@color/white"
         android:background="@color/colorAccent"
+        app:contentInsetStart="0dp"
         app:navigationIcon="@drawable/ic_arrow_white"
-        app:title="我的推广">
-        <TextView
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_gravity="center"
-            android:text="我的推广"
-            android:textSize="@dimen/text_size_f"
-            android:textStyle="bold" />
+        app:title="我的推广"
+        app:titleTextColor="@color/white">
+
     </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/promoter_current_time_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="10dp"
+        android:layout_toLeftOf="@id/promoter_query_btn"
+        android:drawableRight="@drawable/allgame_number"
+        android:text="选择日期：" />
+
+    <TextView
+        android:id="@+id/promoter_query_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/toolbar"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_game_download_btn_bg"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:text="查询"
+        android:textColor="@color/white" />
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar" >
+        android:layout_below="@id/promoter_query_btn"
+        android:layout_marginTop="10dp">
 
         <ListView
             android:id="@+id/lv"
-            android:choiceMode="singleChoice"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:cacheColorHint="@color/transparent"
-            android:listSelector="@color/transparent"
+            android:choiceMode="singleChoice"
+            android:listSelector="@color/transparent" />
+
+        <include
+            android:id="@+id/empty_view_layout"
+            layout="@layout/layout_empty_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <include layout="@layout/layout_empty_view"
-            android:id="@+id/empty_view_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-        <include layout="@layout/invis_layout"
-            android:visibility="gone"
+        <include
             android:id="@+id/invis_layout"
+            layout="@layout/invis_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
     </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/promoter_loading_pb"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        style="@android:style/Widget.ProgressBar.Inverse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </RelativeLayout>

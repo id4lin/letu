@@ -5,6 +5,7 @@ import com.letu.app.game.strategy.ui.me.bean.CollectListItemResponse;
 import com.letu.app.game.strategy.ui.me.bean.GameGridItemResponse;
 import com.letu.app.game.strategy.ui.other.bean.BannerListItemResponse;
 import com.letu.app.game.strategy.ui.other.bean.OtherResponse;
+import com.letu.app.game.strategy.ui.other.bean.PromoterIncomeListItemResponse;
 import com.letu.app.game.strategy.ui.other.bean.PromoterListItemResponse;
 import com.letu.app.game.strategy.ui.other.bean.VerifyTokenResponse;
 
@@ -46,10 +47,23 @@ public interface OtherNetApi {
     /**
      * 获取我的推广列表
      * @param token
+     * @param starTime【格式"2018-08-01"表示"2018-08-01 00:00:00"】
+     * @param endTime
      * @return
      */
     @GET("user/spread?")
-    Flowable<BaseResponse<List<PromoterListItemResponse>>> fetchMyPromoterList(@Query("token") String token);
+    Flowable<BaseResponse<List<PromoterListItemResponse>>> fetchMyPromoterList(@Query("token") String token,@Query("starTime")String starTime,@Query("endTime")String endTime);
+
+    /**
+     * 获取用户充值明细
+     * @param token
+     * @param gameId
+     * @param starTime【格式"2018-08-01"表示"2018-08-01 00:00:00"】
+     * @param endTime
+     * @return
+     */
+    @GET("user/spreadIncome?")
+    Flowable<BaseResponse<List<PromoterIncomeListItemResponse>>> fetchPromoterIncomeList(@Query("token") String token, @Query("gameid") String gameId, @Query("starTime")String starTime, @Query("endTime")String endTime);
 
 
     /**

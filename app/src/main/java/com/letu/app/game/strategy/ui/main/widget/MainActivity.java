@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnPageChange;
 
 public class MainActivity extends BaseActivity<MainPresenter> implements MainContract.View {

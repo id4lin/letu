@@ -47,6 +47,9 @@ public class GameListPresenter extends BasePresenter<GameListContract.View> impl
                     @Override
                     public void onComplete() {
                         super.onComplete();
+                        if(null==mView){
+                            return;
+                        }
                         mView.fetchMyGameListComplete();
                     }
 

@@ -3,6 +3,7 @@ package com.letu.app.game.strategy.ui.me.contract;
 import com.letu.app.baselib.base.BaseActivityView;
 import com.letu.app.game.strategy.ui.other.bean.PromoterListItemResponse;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ public class PromoterContract {
     public interface View extends BaseActivityView {
         void fetchMyPromoterListSuccess(List<PromoterListItemResponse> promoterListItemResponseList);
         void fetchMyPromoterListFails(int code,String msg);
+        void fetchMyPromoterListError();
     }
 
 
@@ -19,6 +21,6 @@ public class PromoterContract {
         /**
          * 获取我的推广列表
          */
-        void fetchMyPromoterList();
+        void fetchMyPromoterList(Date date);
     }
 }

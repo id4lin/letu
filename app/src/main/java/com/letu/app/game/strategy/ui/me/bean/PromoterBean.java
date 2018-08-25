@@ -13,6 +13,7 @@ public class PromoterBean implements Serializable{
     private String registNum;
     private String promoterCode;
     private String gameId;
+    private float radio;
 //    private String apkUrl;
 //    private String ipaUrl;
     private List<GameUrlBean> gameUrlBeanList;
@@ -36,6 +37,15 @@ public class PromoterBean implements Serializable{
         public void setUrl(String url) {
             this.url = url;
         }
+    }
+
+
+    public float getRadio() {
+        return radio;
+    }
+
+    public void setRadio(float radio) {
+        this.radio = radio;
     }
 
     public String getPromoterCode() {
@@ -106,7 +116,9 @@ public class PromoterBean implements Serializable{
         return gameUrlBeanList;
     }
 
-    public void setGameUrlBean(List<GameUrlBean> gameUrlBeanList) {
+    public void setGameUrlBeanList(List<GameUrlBean> gameUrlBeanList) {
         this.gameUrlBeanList = gameUrlBeanList;
     }
+
+
 }
