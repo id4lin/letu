@@ -1,8 +1,5 @@
 package com.letu.app.game.strategy.ui.common.bottompopfragmentmenu;
 
-/**
- * Created by guorui.he on 2016/6/19.
- */
 public class MenuItem {
     public  MenuItem() {
 

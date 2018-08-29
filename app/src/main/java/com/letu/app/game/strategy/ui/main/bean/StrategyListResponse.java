@@ -29,14 +29,15 @@ public class StrategyListResponse {
         private String id;
         private String gameId;
         private String title;
-        private String typeOne;
-        private String typeTwo;
-        private String source;
         private String creatUser;
         private long creattime;
-        private String content;
         private int score;
-        private String game;
+        private int isLiked;
+        private int isCollected;
+        private int orderNum;
+        private long readTimes;
+        private String content;
+        private String gamePic;
 
         public String getId() {
             return id;
@@ -62,29 +63,6 @@ public class StrategyListResponse {
             this.title = title;
         }
 
-        public String getTypeOne() {
-            return typeOne;
-        }
-
-        public void setTypeOne(String typeOne) {
-            this.typeOne = typeOne;
-        }
-
-        public String getTypeTwo() {
-            return typeTwo;
-        }
-
-        public void setTypeTwo(String typeTwo) {
-            this.typeTwo = typeTwo;
-        }
-
-        public String getSource() {
-            return source;
-        }
-
-        public void setSource(String source) {
-            this.source = source;
-        }
 
         public String getCreatUser() {
             return creatUser;
@@ -118,12 +96,44 @@ public class StrategyListResponse {
             this.score = score;
         }
 
-        public String getGame() {
-            return game;
+        public int getIsLiked() {
+            return isLiked;
         }
 
-        public void setGame(String game) {
-            this.game = game;
+        public void setIsLiked(int isLiked) {
+            this.isLiked = isLiked;
+        }
+
+        public int getIsCollected() {
+            return isCollected;
+        }
+
+        public void setIsCollected(int isCollected) {
+            this.isCollected = isCollected;
+        }
+
+        public int getOrderNum() {
+            return orderNum;
+        }
+
+        public void setOrderNum(int orderNum) {
+            this.orderNum = orderNum;
+        }
+
+        public long getReadTimes() {
+            return readTimes;
+        }
+
+        public void setReadTimes(long readTimes) {
+            this.readTimes = readTimes;
+        }
+
+        public String getGamePic() {
+            return gamePic;
+        }
+
+        public void setGamePic(String gamePic) {
+            this.gamePic = gamePic;
         }
     }
 }

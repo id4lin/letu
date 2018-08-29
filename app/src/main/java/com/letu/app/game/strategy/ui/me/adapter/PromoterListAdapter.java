@@ -76,7 +76,7 @@ public class PromoterListAdapter extends BaseAdapter {
 //        holder.payTv.setText(mDataList.get(position).getPay());
         holder.gainsharingTv.setText(mDataList.get(position).getGainsharing());
         holder.registTv.setText(mDataList.get(position).getRegistNum());
-        holder.promoterCodeTv.setText(mDataList.get(position).getPromoterCode());
+        holder.promoterCodeTv.setText(mDataList.get(position).getBalance());
 
 
         return convertView;

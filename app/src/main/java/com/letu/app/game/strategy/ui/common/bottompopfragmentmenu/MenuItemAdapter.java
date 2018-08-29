@@ -2,6 +2,7 @@ package com.letu.app.game.strategy.ui.common.bottompopfragmentmenu;
 
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +11,10 @@ import android.widget.TextView;
 
 
 import com.letu.app.game.strategy.R;
+import com.letu.app.game.strategy.utils.DensityUtils;
 
 import java.util.List;
 
-/**
- * Created by guorui.he on 2016/6/19.
- */
 public class MenuItemAdapter extends BaseAdapter{
 
 
@@ -60,21 +59,22 @@ public class MenuItemAdapter extends BaseAdapter{
         MenuItem menuItem = menuItems.get(position);
 
         TextView textView = (TextView) view.findViewById(R.id.menu_item);
-        textView.setText(menuItem.getText());
-//        if(menuItems.size() == 1) {
+        textView.setText(Html.fromHtml(menuItem.getText()));
+        if(menuItems.size() == 1) {
 //            textView.setBackgroundResource(R.drawable.bottom_menu_btn_selector);
-//        } else if(position == 0) {
+        } else if(position == 0) {
 //            textView.setBackgroundResource(R.drawable.bottom_menu_top_btn_selector);
-//        } else if(position < menuItems.size() - 1) {
+            textView.setTextSize(14);
+        } else if(position < menuItems.size() - 1) {
 //            textView.setBackgroundResource(R.drawable.bottom_menu_mid_btn_selector);
-//        } else {
+        } else {
 //            textView.setBackgroundResource(R.drawable.bottom_menu_bottom_btn_selector);
-//        }
-//        if(menuItem.getStyle() == MenuItem.MenuItemStyle.COMMON) {
-//            textView.setTextColor(ContextCompat.getColor(context, R.color.titleTextColor));
-//        } else {
-//            textView.setTextColor(ContextCompat.getColor(context, R.color.titleTextColor));
-//        }
+        }
+        if(menuItem.getStyle() == MenuItem.MenuItemStyle.COMMON) {
+            textView.setTextColor(ContextCompat.getColor(context, R.color.titleTextColor));
+        } else {
+            textView.setTextColor(ContextCompat.getColor(context, R.color.titleTextColor));
+        }
         MenuItemOnClickListener _menuItemOnClickListener =menuItem.getMenuItemOnClickListener();
         if(_menuItemOnClickListener != null) {
             textView.setOnClickListener(_menuItemOnClickListener);

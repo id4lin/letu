@@ -14,6 +14,7 @@ public class PromoterBean implements Serializable{
     private String promoterCode;
     private String gameId;
     private float radio;
+    private String balance;
 //    private String apkUrl;
 //    private String ipaUrl;
     private List<GameUrlBean> gameUrlBeanList;
@@ -120,5 +121,11 @@ public class PromoterBean implements Serializable{
         this.gameUrlBeanList = gameUrlBeanList;
     }
 
+    public String getBalance() {
+        return balance;
+    }
 
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
 }

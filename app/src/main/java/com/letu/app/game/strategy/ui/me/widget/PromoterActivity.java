@@ -177,6 +177,7 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
             promoterBean.setPromoterCode(promoterListItemResponse.getCode());
             promoterBean.setPay(promoterListItemResponse.getPayMoney() + "");
             promoterBean.setRadio(promoterListItemResponse.getRadio());
+            promoterBean.setBalance("否");
 
             List<PromoterListItemResponse.DownloadBean> downloadBeanList = promoterListItemResponse.getDownloadBean();
             if (null != downloadBeanList && !downloadBeanList.isEmpty()) {
@@ -207,9 +208,6 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
     @OnClick(R.id.promoter_current_time_tv)
     public void onPromoterCurrentTimeTvClicked() {
 
-        if(LeTuUtils.isFastClick()){
-            return;
-        }
         if(null==pvTime){
             return;
         }

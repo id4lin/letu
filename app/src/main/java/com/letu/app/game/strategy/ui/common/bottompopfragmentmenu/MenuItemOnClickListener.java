@@ -3,9 +3,6 @@ package com.letu.app.game.strategy.ui.common.bottompopfragmentmenu;
 import android.util.Log;
 import android.view.View;
 
-/**
- * Created by guorui.he on 2016/6/20.
- */
 public abstract class MenuItemOnClickListener implements View.OnClickListener{
 
     public MenuItemOnClickListener(BottomMenuFragment _bottomMenuFragment, MenuItem _menuItem) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     private GameGridRecyclerViewAdapter.OnItemLongClickListener mOnItemLongClickListener;
     private static final int EMPTY_VIEW = 1;
     private String status;
-    private boolean isEdited=false;
+    private boolean isEdited = false;
     private OnDeleteItemClickListener mOnDeleteItemClickListener;
     private int mCurrentDeletePosition;
 
@@ -71,7 +72,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         mContext = context;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
         public TextView title;
         public ImageView imageView;
         public ConstraintLayout mGridItemConstraintLayout;
@@ -79,25 +80,25 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         private GameGridRecyclerViewAdapter.OnItemClickListener mListener;// 声明自定义的接口
         private GameGridRecyclerViewAdapter.OnItemLongClickListener mLongClickListener;// 声明自定义的接口
 
-        public ViewHolder(View itemView, GameGridRecyclerViewAdapter.OnItemClickListener listener,GameGridRecyclerViewAdapter.OnItemLongClickListener longClickListener) {
+        public ViewHolder(View itemView, GameGridRecyclerViewAdapter.OnItemClickListener listener, GameGridRecyclerViewAdapter.OnItemLongClickListener longClickListener) {
             super(itemView);
             this.mListener = listener;
-            this.mLongClickListener=longClickListener;
+            this.mLongClickListener = longClickListener;
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
             title = (TextView) itemView.findViewById(R.id.game_name);
             imageView = (ImageView) itemView.findViewById(R.id.game_icon);
-            mGridItemConstraintLayout=(ConstraintLayout)itemView.findViewById(R.id.grid_item_constraint_layout);
-            mBadgeView=new BadgeView(mContext,mGridItemConstraintLayout);
-//            mBadgeView.setText("一");
+            mGridItemConstraintLayout = (ConstraintLayout) itemView.findViewById(R.id.grid_item_constraint_layout);
+            mBadgeView = new BadgeView(mContext, mGridItemConstraintLayout);
+            //            mBadgeView.setText("一");
             mBadgeView.setBackgroundResource(R.drawable.ic_sign_delete);
-            mBadgeView.setHeight(DensityUtils.dp2px(mContext,20));
-            mBadgeView.setWidth(DensityUtils.dp2px(mContext,20));
+            mBadgeView.setHeight(DensityUtils.dp2px(mContext, 20));
+            mBadgeView.setWidth(DensityUtils.dp2px(mContext, 20));
 
             mBadgeView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showBottomMenu(getPosition(),dataList.get(getPosition()).getGameId());
+                    showBottomMenu(getPosition(), dataList.get(getPosition()).getGameId(),dataList.get(getPosition()).getGameName());
                 }
             });
 
@@ -106,7 +107,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
 
         @Override
         public void onClick(View view) {
-            if(isEdited){
+            if (isEdited) {
                 return;
             }
             if (null != mListener) {
@@ -116,11 +117,11 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
 
         @Override
         public boolean onLongClick(View view) {
-//            if(!isEdited){
-//                return false;
-//            }
+            //            if(!isEdited){
+            //                return false;
+            //            }
 
-            if(null==mLongClickListener){
+            if (null == mLongClickListener) {
                 return false;
             }
 
@@ -139,7 +140,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
             return new GameGridRecyclerViewAdapter.EmptyViewHolder(view);
         } else {
             View view = inflater.inflate(R.layout.game_grid_recycler_view_item, parent, false);
-            return new GameGridRecyclerViewAdapter.ViewHolder(view, mClickListener,mOnItemLongClickListener);
+            return new GameGridRecyclerViewAdapter.ViewHolder(view, mClickListener, mOnItemLongClickListener);
         }
 
     }
@@ -159,7 +160,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
                     .tag(mContext)
                     .into(viewHolder.imageView);
 
-            if(isEdited){
+            if (isEdited) {
                 viewHolder.mBadgeView.show();
                 TranslateAnimation animation = new TranslateAnimation(0, -5, 0, 0);
                 animation.setInterpolator(new OvershootInterpolator());//OvershootInterpolator
@@ -168,7 +169,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
                 animation.setRepeatMode(Animation.REVERSE);
                 viewHolder.mGridItemConstraintLayout.startAnimation(animation);
 
-            }else{
+            } else {
                 viewHolder.mBadgeView.hide();
             }
         }
@@ -218,32 +219,32 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         }
     }
 
-    private void showBottomMenu(int position,String gameId) {
+    private void showBottomMenu(int position, String gameId,String gameName) {
         BottomMenuFragment bottomMenuFragment = new BottomMenuFragment();
 
         List<MenuItem> menuItemList = new ArrayList<MenuItem>();
         MenuItem menuItem1 = new MenuItem();
-        menuItem1.setText("确认要删除该游戏吗？");
+        menuItem1.setText("确认要删除<font color='#FFA042'>《"+gameName+"》</font>吗？");
         menuItem1.setStyle(MenuItem.MenuItemStyle.STRESS);
         MenuItem menuItem2 = new MenuItem();
         menuItem2.setText("确定");
-        //        menuItem2.setStyle(MenuItem.MenuItemStyle.COMMON);
+        menuItem2.setStyle(MenuItem.MenuItemStyle.COMMON);
         menuItem2.setMenuItemOnClickListener(new MenuItemOnClickListener(bottomMenuFragment, menuItem2) {
             @Override
             public void onClickMenuItem(View v, MenuItem menuItem) {
 
-                if(null==mOnDeleteItemClickListener){
+                if (null == mOnDeleteItemClickListener) {
                     return;
                 }
 
-                mCurrentDeletePosition=position;
-                mOnDeleteItemClickListener.onDeleteItem(position,dataList.size(),gameId);
+                mCurrentDeletePosition = position;
+                mOnDeleteItemClickListener.onDeleteItem(position, dataList.size(), gameId);
 
 
-//                if(mOnDeleteItemClickListener.onDeleteItem(position,dataList.size(),gameId)){
-//                    dataList.remove(position);
-//                    notifyDataSetChanged();
-//                }
+                //                if(mOnDeleteItemClickListener.onDeleteItem(position,dataList.size(),gameId)){
+                //                    dataList.remove(position);
+                //                    notifyDataSetChanged();
+                //                }
             }
         });
         menuItemList.add(menuItem1);
@@ -251,11 +252,11 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
 
         bottomMenuFragment.setMenuItems(menuItemList);
 
-        bottomMenuFragment.show(((Activity)mContext).getFragmentManager(), "BottomMenuFragment");
+        bottomMenuFragment.show(((Activity) mContext).getFragmentManager(), "BottomMenuFragment");
     }
 
     public interface OnDeleteItemClickListener {
-        void onDeleteItem(int position,int size, String gameId);
+        void onDeleteItem(int position, int size, String gameId);
     }
 
     public OnDeleteItemClickListener getOnDeleteItemClickListener() {
@@ -266,7 +267,7 @@ public class GameGridRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         this.mOnDeleteItemClickListener = onDeleteItemClickListener;
     }
 
-    public void deleteSuccessCallback(){
+    public void deleteSuccessCallback() {
         dataList.remove(mCurrentDeletePosition);
         notifyDataSetChanged();
     }

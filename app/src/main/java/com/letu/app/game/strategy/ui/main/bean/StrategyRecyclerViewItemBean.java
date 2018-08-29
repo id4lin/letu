@@ -9,6 +9,8 @@ public class StrategyRecyclerViewItemBean {
     private String createTime;
     private String createUser;
     private String imageView;
+    private String description;
+    private String readTimes;
 
     public String getStrategyId() {
         return strategyId;
@@ -48,5 +50,21 @@ public class StrategyRecyclerViewItemBean {
 
     public void setCreateUser(String createUser) {
         this.createUser = createUser;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getReadTimes() {
+        return readTimes;
+    }
+
+    public void setReadTimes(String readTimes) {
+        this.readTimes = readTimes;
     }
 }

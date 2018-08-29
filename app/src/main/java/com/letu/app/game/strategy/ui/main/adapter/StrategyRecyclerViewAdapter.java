@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.letu.app.game.strategy.R;
+import com.letu.app.game.strategy.ui.common.view.TextViewDrawable;
 import com.letu.app.game.strategy.ui.main.bean.StrategyRecyclerViewItemBean;
 import com.squareup.picasso.Picasso;
 
@@ -48,6 +49,7 @@ public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
         public TextView title;
         public TextView createTime;
         public TextView createUser;
+        public TextViewDrawable readTimes;
         //        public ImageView imageView;
         private OnItemClickListener mListener;// 声明自定义的接口
 
@@ -58,6 +60,7 @@ public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
             title = (TextView) itemView.findViewById(R.id.title);
             createTime = (TextView) itemView.findViewById(R.id.create_time);
             createUser = (TextView) itemView.findViewById(R.id.create_user);
+            readTimes = (TextViewDrawable) itemView.findViewById(R.id.read_times);
             //            imageView = (ImageView) itemView.findViewById(R.id.game_icon);
         }
 
@@ -92,6 +95,13 @@ public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
             viewHolder.title.setText(dataList.get(position).getTitle());
             viewHolder.createTime.setText(dataList.get(position).getCreateTime());
             viewHolder.createUser.setText(dataList.get(position).getCreateUser());
+            if("0".equals(dataList.get(position).getReadTimes())){
+                viewHolder.readTimes.setVisibility(View.GONE);
+            }else{
+                viewHolder.readTimes.setVisibility(View.VISIBLE);
+                viewHolder.readTimes.setText(dataList.get(position).getReadTimes());
+            }
+
             //        Picasso.get()
             //                .load(dataList.get(position).imageView)
             //                .error(R.drawable.ycloud_player_logo_youku)
