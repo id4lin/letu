@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -68,6 +69,8 @@ public class GameDetailActivity extends BaseActivity<GameDetailPresenter> implem
     ImageView gameScreenShot3;
     @BindView(R.id.game_screen_shot_4)
     ImageView gameScreenShot4;
+    @BindView(R.id.game_detail_AppBarLayout)
+    AppBarLayout mAppBarLayout;
     private String gameId;
 
     private ArrayList<String> mImageUrlList = new ArrayList<>();
@@ -94,6 +97,24 @@ public class GameDetailActivity extends BaseActivity<GameDetailPresenter> implem
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 finish();
+            }
+        });
+
+        mAppBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int i) {
+                if (i == 0) {
+                    //展开状态
+                    play.setVisibility(View.INVISIBLE);
+
+                } else if (Math.abs(i) >= appBarLayout.getTotalScrollRange()) {
+                    //折叠状态
+                    play.setVisibility(View.VISIBLE);
+
+                } else {
+                    //中间状态
+                    play.setVisibility(View.INVISIBLE);
+                }
             }
         });
 

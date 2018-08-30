@@ -288,7 +288,7 @@ public class StrategyFragment extends BaseFragment<StrategyPresenter> implements
             strategyRecyclerViewItemBean.setStrategyId(strategy.getId());
             strategyRecyclerViewItemBean.setTitle(strategy.getTitle());
             strategyRecyclerViewItemBean.setCreateTime(TimeUtils.time2TextTime(strategy.getCreattime()));
-            strategyRecyclerViewItemBean.setCreateUser(strategy.getCreatUser());
+            strategyRecyclerViewItemBean.setCreateUser("系统".equals(strategy.getCreatUser())?"":strategy.getCreatUser());
             strategyRecyclerViewItemBean.setDescription(strategy.getContent());
             strategyRecyclerViewItemBean.setReadTimes(strategy.getReadTimes()+"");
             strategyRecyclerViewItemBean.setImageView("image");

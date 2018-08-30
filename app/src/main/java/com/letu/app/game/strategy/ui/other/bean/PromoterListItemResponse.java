@@ -16,8 +16,16 @@ public class PromoterListItemResponse {
     private long payMoney;
     private float agentMoney;
     private float radio;
+    private boolean isChecked;
     private List<DownloadBean> downloadBean;
 
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     public void setAgentMoney(float agentMoney) {
         this.agentMoney = agentMoney;

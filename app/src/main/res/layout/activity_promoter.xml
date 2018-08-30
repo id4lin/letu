@@ -23,7 +23,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/toolbar"
-        android:layout_marginTop="10dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        android:layout_marginTop="5dp"
         android:layout_toLeftOf="@id/promoter_query_btn"
         android:drawableRight="@drawable/allgame_number"
         android:text="选择日期：" />

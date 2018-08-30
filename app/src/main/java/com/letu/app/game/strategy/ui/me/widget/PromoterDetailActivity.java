@@ -24,6 +24,7 @@ import com.letu.app.game.strategy.ui.me.contract.PromoterDetailContract;
 import com.letu.app.game.strategy.ui.me.presenter.PromoterDetailPresenter;
 import com.letu.app.game.strategy.ui.other.bean.PromoterIncomeListItemResponse;
 import com.letu.app.game.strategy.utils.LeTuUtils;
+import com.letu.app.game.strategy.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,7 +147,8 @@ public class PromoterDetailActivity extends BaseActivity<PromoterDetailPresenter
         promoterRegistNumTv.setText(promoterBean.getRegistNum());
         promoterDivideInfoTv.setText(promoterBean.getRadio()+"");
 
-        setTitle();
+//        setTitle();
+        gameNameTv.setText(TimeUtils.dateFormat(mStartTime,TimeUtils.FORMAT_YYYY_MM_DD_HH_MM_SS,TimeUtils.FORMAT_YYYY_MM_C)+" - 推广信息");
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         promoterListRv.setLayoutManager(layoutManager);
         mPromoterListRecyclerViewAdapter = new PromoterListRecyclerViewAdapter(this);

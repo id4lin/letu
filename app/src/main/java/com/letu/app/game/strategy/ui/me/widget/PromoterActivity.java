@@ -70,6 +70,7 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
 
     private TimePickerView pvTime;
     private Date mSelectDate;
+    private Date mCurrSelectDate;
 
     @Override
     protected void daggerInit() {
@@ -85,6 +86,7 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
         setContentView(R.layout.activity_promoter);
         mPresenter.attachView(this);
         mSelectDate=new Date();
+        mCurrSelectDate=mSelectDate;
         mPresenter.fetchMyPromoterList(mSelectDate);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,8 +138,8 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
 
                 Intent intent = new Intent(mContext, PromoterDetailActivity.class);
                 intent.putExtra(Constant.KEY_INTENT_PROMOTER_BEAN, mPromoterBeanList.get(position - 1));
-                intent.putExtra(Constant.KEY_INTENT_START_TIME, TimeUtils.firstDayOfMonth(mSelectDate));
-                intent.putExtra(Constant.KEY_INTENT_END_TIME, TimeUtils.lastDayOfMonth(mSelectDate));
+                intent.putExtra(Constant.KEY_INTENT_START_TIME, TimeUtils.firstDayOfMonth(mCurrSelectDate));
+                intent.putExtra(Constant.KEY_INTENT_END_TIME, TimeUtils.lastDayOfMonth(mCurrSelectDate));
                 startActivity(intent);
             }
         });
@@ -177,7 +179,7 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
             promoterBean.setPromoterCode(promoterListItemResponse.getCode());
             promoterBean.setPay(promoterListItemResponse.getPayMoney() + "");
             promoterBean.setRadio(promoterListItemResponse.getRadio());
-            promoterBean.setBalance("否");
+            promoterBean.setBalance(promoterListItemResponse.isChecked()?"是":"否");
 
             List<PromoterListItemResponse.DownloadBean> downloadBeanList = promoterListItemResponse.getDownloadBean();
             if (null != downloadBeanList && !downloadBeanList.isEmpty()) {
@@ -219,6 +221,7 @@ public class PromoterActivity extends BaseActivity<PromoterPresenter> implements
         if(LeTuUtils.isFastClick()){
             return;
         }
+        mCurrSelectDate=mSelectDate;
         mPresenter.fetchMyPromoterList(mSelectDate);
         promoterLoadingPb.setVisibility(View.VISIBLE);
     }

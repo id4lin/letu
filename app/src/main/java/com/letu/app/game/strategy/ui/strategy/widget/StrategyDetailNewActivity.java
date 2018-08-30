@@ -326,7 +326,7 @@ public class StrategyDetailNewActivity extends BaseActivity<StrategyDetailPresen
         }
 
         strategyTitle.setText(strategyDetailResponse.getTitle());
-        strategyCreateName.setText(strategyDetailResponse.getCreatUser());
+        strategyCreateName.setText("系统".equals(strategyDetailResponse.getCreatUser())?"":strategyDetailResponse.getCreatUser());
         strategyCreateTime.setText(TimeUtils.time2TextTime(strategyDetailResponse.getCreattime()));
         String webviewContent = null==strategyDetailResponse.getContent()||LeTuUtils.isNull(strategyDetailResponse.getContent())?"":strategyDetailResponse.getContent();
 

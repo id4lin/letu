@@ -1,5 +1,6 @@
 package com.letu.app.game.strategy.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -10,17 +11,34 @@ import java.util.Date;
 public class TimeUtils {
 
     private static final String DEFAULT_FORMAT = "yyyy-MM-dd HH:mm";
-    private static final String FORMAT_YYYY_MM = "yyyy-MM";
-    private static final String FORMAT_YYYY_MM_DD = "yyyy-MM-dd";
-    private static final String FORMAT_MM_DD = "MM-dd";
-    private static final String FORMAT_YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
-    private static final String FORMAT_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
+    public static final String FORMAT_YYYY_MM = "yyyy-MM";
+    public static final String FORMAT_YYYY_MM_C = "yyyy年MM月";
+    public static final String FORMAT_YYYY_MM_DD = "yyyy-MM-dd";
+    public static final String FORMAT_MM_DD = "MM-dd";
+    public static final String FORMAT_YYYY_MM_DD_HH_MM = "yyyy-MM-dd HH:mm";
+    public static final String FORMAT_YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
     private final static long MS_MINUTE = 60 * 1000;// 1分钟
     private final static long MS_HOUR = 60 * MS_MINUTE;// 1小时
     private final static long MS_DAY = 24 * MS_HOUR;// 1天
     private final static long MS_MONTH = 31 * MS_DAY;// 月
     private final static long MS_YEAR = 12 * MS_MONTH;// 年
+
+
+    public static String dateFormat(String dateStr,String sourceFormat,String targetFormat) {
+        SimpleDateFormat sdf = new SimpleDateFormat(sourceFormat);
+        String curDateStr=null;
+        try {
+            Date  date = sdf.parse(dateStr);
+            SimpleDateFormat curSdf = new SimpleDateFormat(targetFormat);
+            curDateStr=curSdf.format(date);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return curDateStr;
+    }
 
     /**
      * 时间戳转换成日期格式字符串
@@ -138,6 +156,7 @@ public class TimeUtils {
 
     /**
      * 获取前月的第一天
+     *
      * @param date
      * @return
      */
@@ -155,6 +174,7 @@ public class TimeUtils {
 
     /**
      * 获取前月的最后一天
+     *
      * @param date
      * @return
      */
@@ -162,7 +182,7 @@ public class TimeUtils {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd 23:59:59");
 
         // 获取前月的最后一天
-        Calendar  cale = Calendar.getInstance();
+        Calendar cale = Calendar.getInstance();
         cale.setTime(date);
         cale.add(Calendar.MONTH, 1);
         cale.set(Calendar.DAY_OF_MONTH, 0);

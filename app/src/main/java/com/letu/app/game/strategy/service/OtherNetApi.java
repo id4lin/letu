@@ -52,7 +52,7 @@ public interface OtherNetApi {
      * @return
      */
     @GET("user/spread?")
-    Flowable<BaseResponse<List<PromoterListItemResponse>>> fetchMyPromoterList(@Query("token") String token,@Query("starTime")String starTime,@Query("endTime")String endTime);
+    Flowable<BaseResponse<List<PromoterListItemResponse>>> fetchMyPromoterList(@Query("token") String token,@Query("startTime")String starTime,@Query("endTime")String endTime);
 
     /**
      * 获取用户充值明细
@@ -63,7 +63,7 @@ public interface OtherNetApi {
      * @return
      */
     @GET("user/spreadIncome?")
-    Flowable<BaseResponse<List<PromoterIncomeListItemResponse>>> fetchPromoterIncomeList(@Query("token") String token, @Query("gameid") String gameId, @Query("starTime")String starTime, @Query("endTime")String endTime);
+    Flowable<BaseResponse<List<PromoterIncomeListItemResponse>>> fetchPromoterIncomeList(@Query("token") String token, @Query("gameid") String gameId, @Query("startTime")String starTime, @Query("endTime")String endTime);
 
 
     /**
