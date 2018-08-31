@@ -20,8 +20,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by WuXiaolong
- * on 2015/7/2.
  */
 public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -95,7 +93,7 @@ public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
             viewHolder.title.setText(dataList.get(position).getTitle());
             viewHolder.createTime.setText(dataList.get(position).getCreateTime());
             viewHolder.createUser.setText(dataList.get(position).getCreateUser());
-            if("0".equals(dataList.get(position).getReadTimes())){
+            if(null==dataList.get(position).getReadTimes()||"0".equals(dataList.get(position).getReadTimes())){
                 viewHolder.readTimes.setVisibility(View.GONE);
             }else{
                 viewHolder.readTimes.setVisibility(View.VISIBLE);
