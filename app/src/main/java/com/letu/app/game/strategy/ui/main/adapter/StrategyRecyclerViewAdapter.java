@@ -2,6 +2,7 @@ package com.letu.app.game.strategy.ui.main.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -90,6 +91,7 @@ public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         if (holder instanceof ViewHolder) {
             ViewHolder viewHolder=(ViewHolder)holder;
+
             viewHolder.title.setText(dataList.get(position).getTitle());
             viewHolder.createTime.setText(dataList.get(position).getCreateTime());
             viewHolder.createUser.setText(dataList.get(position).getCreateUser());
@@ -98,6 +100,12 @@ public class StrategyRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerVi
             }else{
                 viewHolder.readTimes.setVisibility(View.VISIBLE);
                 viewHolder.readTimes.setText(dataList.get(position).getReadTimes());
+            }
+            if(null==dataList.get(position).getCreateUser()|| TextUtils.isEmpty(dataList.get(position).getCreateUser())){
+                viewHolder.createUser.setVisibility(View.INVISIBLE);
+            }else{
+                viewHolder.createUser.setVisibility(View.VISIBLE);
+                viewHolder.createUser.setText(dataList.get(position).getCreateUser());
             }
 
             //        Picasso.get()

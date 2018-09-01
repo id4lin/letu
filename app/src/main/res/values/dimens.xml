@@ -251,4 +251,21 @@
     <dimen name="abc_text_size_title_material_toolbar">20.0dip</dimen>
 
     <dimen name="grid_expected_size">120dp</dimen>
+
+
+    <dimen name="tu_text_size_tool_bar_title">16sp</dimen>
+    <dimen name="tu_text_size_title1">14sp</dimen>
+    <dimen name="tu_text_size_title2">13sp</dimen>
+    <dimen name="tu_text_size_title3">10sp</dimen>
+
+    <dimen name="tu_text_size_game_detail_name_title">19sp</dimen>
+    <dimen name="tu_text_size_game_detail_group_title">16sp</dimen>
+    <dimen name="tu_text_size_game_detail_title2">13sp</dimen>
+    <dimen name="tu_text_size_game_detail_title3">10sp</dimen>
+
+    <dimen name="tu_text_size_me_title1">14sp</dimen>
+
+    <dimen name="tu_text_size_bottom_title">9sp</dimen>
+
+    <dimen name="fixed_height_bottom_padding">10dp</dimen>
 </resources>

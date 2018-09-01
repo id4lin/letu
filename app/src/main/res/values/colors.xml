@@ -226,4 +226,24 @@
     <color name="bottom_menu_btn_text_stress_color">#FF0000</color>
     <color name="bottom_menu_layout_color">#00000000</color>
     <color name="list_item_color">#b3FAFAFA</color>
+
+    <color name="tu_bg_color_status_bar">#ff5881bf</color>
+    <color name="tu_bg_color_page">#F4F4F4</color>
+    <color name="tu_bg_color_tool_bar">#fff4f4f4</color>
+    <color name="tu_bg_color_select_bottom">#ff4671b2</color>
+    <color name="tu_bg_color_normal_bottom">#ff5881bf</color>
+    <color name="tu_bg_color_page_content">#FFFFFF</color>
+
+    <color name="tu_text_color_tool_bar_title">#5881BF</color>
+    <color name="tu_text_color_tool_bar_action_btn">#ff5881bf</color>
+    <color name="tu_text_color_title1">#333333</color>
+    <color name="tu_text_color_title2">#666666</color>
+    <color name="tu_text_color_title3">#999999</color>
+
+    <color name="tu_text_color_select_bottom_title">#ff9fc5ff</color>
+    <color name="tu_text_color_normal_bottom_title">#ffffffff</color>
+
+    <color name="tu_text_color_me_title1">#ff333333</color>
+    <color name="tu_text_color_me_title2">#ff666666</color>
+
 </resources>
